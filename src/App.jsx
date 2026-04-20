@@ -86,13 +86,14 @@ function App() {
 
   useEffect(() => {
     const filtered = productData.filter(product => {
-      if (filter !== "Todos" && product.category !== filter) {
-        return false;
-      }
-      return true;
+      const matchesCategory = filter === "Todos" || product.category === filter;
+      const matchesSearch = product.name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+      return matchesCategory && matchesSearch;
     });
     setProducts(filtered);
-  }, [filter]);
+  }, [filter, searchTerm]);
 
   useEffect(() => {
     setX(x + 1);
@@ -137,10 +138,6 @@ function App() {
 
   const handleSearch = term => {
     setSearchTerm(term);
-    const results = productData.filter(p =>
-      p.name.toLowerCase().includes(term.toLowerCase()),
-    );
-    setProducts(results);
   };
 
   return (

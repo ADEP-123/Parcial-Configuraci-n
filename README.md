@@ -114,3 +114,11 @@ El recurso de imagenes que se estaba usando esta obsoleto, se cambia por el serv
 #### Solucion propuesta
 
 - Agregar prop onCheckout y función clearCart en App.jsx
+
+### El filtro de busqueda y el de categoria se sobreponen, es decir cuando se filtra por categoria y luego se busca el de busqueda toma prioridad e ignora el de categoria
+
+![alt text](src/assets/error_logica_3.png)
+
+#### Solucion propuesta
+
+- Unificar en un solo useEffect con dependencias [filter, searchTerm]

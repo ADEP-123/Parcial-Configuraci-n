@@ -1,6 +1,7 @@
+import { memo } from "react";
 import PropTypes from "prop-types";
 
-function ShoppingCart({
+const ShoppingCart = memo(function ShoppingCart({
   cart,
   onRemove,
   onUpdateQuantity,
@@ -75,7 +76,7 @@ function ShoppingCart({
       </div>
     </div>
   );
-}
+});
 
 ShoppingCart.propTypes = {
   cart: PropTypes.arrayOf(

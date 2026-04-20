@@ -263,3 +263,11 @@ Cada vez que App re-renderiza, React vuelve a renderizar ProductCard, FilterBar 
 
 - memo en los componentes
 - useCallback en las funciones que se pasan como props
+
+### ShoppingCart no se desmonta al cerrar
+
+ShoppingCart solo se monta/desmonta según showCart pero mientras está abierto, cualquier cambio en App (agregar producto, cambiar filtro) lo re-renderiza completo incluyendo el map de todos los items
+
+#### Solucion propuesta
+
+- Evitar re-renders innecesarios con memo

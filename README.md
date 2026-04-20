@@ -153,3 +153,16 @@ Existe un console log en app.jsx que se olvido eliminar
 #### Solucion propuesta
 
 - Eliminarlo
+
+### Data hardcodeada en archivo app.jsx
+
+Existe un array de data hardcodeada en el archivo app.jsx lo cual es una mala practica
+
+#### Solucion propuesta
+
+- Crear una nuevo archivo que contenga `products.js` la data con la direccion:
+```
+├── src/
+│   ├── data/
+│   │   ├── products.js
+```

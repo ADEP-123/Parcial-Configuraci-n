@@ -64,3 +64,9 @@ export const productData = [
     stock: 10,
   },
 ];
+
+export const PRICE_RANGES = {
+  low: { max: 80 },
+  medium: { min: 80, max: 130 },
+  high: { min: 130 },
+};

@@ -313,3 +313,13 @@ Al hacer click en "Finalizar compra" la compra se ejecta sin ninguna confirmaci�
 #### Solucion propuesta:
 
 - Agregar confirmación antes de finalizar compra item del carrito
+
+## Codigo duplicado y nombres de variables poco claras
+
+### Lógica de filtro de precio repetida
+
+La lógica de los rangos de precio está definida una sola vez en useProductFilter.js, lo que está bien. Pero los rangos (< 80, >= 80 && <= 130, > 130) que si cambian habría que buscarlos manualmente.
+
+#### Solucion propuesta
+
+Centralizar rangos de precio en PRICE_RANGES

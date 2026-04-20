@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { productData } from "../data/products";
+import { productData, PRICE_RANGES } from "../data/products";
 
 export function useProductFilter() {
   const [filter, setFilter] = useState("Todos");
@@ -24,11 +24,12 @@ export function useProductFilter() {
         priceFilter === "all"
           ? true
           : priceFilter === "low"
-            ? product.price < 80
+            ? product.price < PRICE_RANGES.low.max
             : priceFilter === "medium"
-              ? product.price >= 80 && product.price <= 130
+              ? product.price >= PRICE_RANGES.medium.min &&
+                product.price <= PRICE_RANGES.medium.max
               : priceFilter === "high"
-                ? product.price > 130
+                ? product.price > PRICE_RANGES.high.min
                 : true;
 
       return matchesCategory && matchesSearch && matchesPrice;

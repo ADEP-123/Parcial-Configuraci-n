@@ -47,6 +47,9 @@ function App() {
               key={product.id}
               product={product}
               onAddToCart={addToCart}
+              quantityInCart={
+                cart.find(item => item.id === product.id)?.quantity ?? 0
+              }
             />
           ))}
         </div>

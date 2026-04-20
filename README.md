@@ -289,3 +289,11 @@ Se puede agregar un producto al carrito sin límite aunque el stock sea 5 y ya t
 #### Solucion propuesta:
 
 - Validar stock disponible al agregar productos al carrito
+
+### No hay feedback visual cuando se alcanza el stock
+
+El botón "Agregar al Carrito" siempre se ve igual aunque el producto ya no tenga stock disponible el usuario no sabe por qué no puede agregar más.
+
+#### Solucion propuesta:
+
+- Deshabilitar botón al alcanzar stock máximo

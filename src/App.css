@@ -255,6 +255,15 @@
   box-shadow: 0 2px 8px rgba(66, 165, 245, 0.4);
 }
 
+.add-button:disabled,
+.add-button--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--md-surface-high);
+  color: var(--md-on-muted);
+  box-shadow: none;
+}
+
 /* =============================================
    CARRITO DE COMPRAS (OVERLAY + MODAL)
    ============================================= */

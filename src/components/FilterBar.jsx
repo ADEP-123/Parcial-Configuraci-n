@@ -8,14 +8,6 @@ function FilterBar({
 }) {
   const categories = ["Todos", "Deportivo", "Formal", "Casual", "Botas"];
 
-  const handleFilterChange = category => {
-    onFilterChange(category);
-  };
-
-  const handlePriceFilter = priceRange => {
-    onPriceChange(priceRange);
-  };
-
   return (
     <div className="filter-bar">
       <div className="category-filters">
@@ -24,7 +16,7 @@ function FilterBar({
           <button
             key={cat}
             className={currentFilter === cat ? "active" : ""}
-            onClick={() => handleFilterChange(cat)}
+            onClick={() => onFilterChange(cat)}
           >
             {cat}
           </button>
@@ -35,19 +27,19 @@ function FilterBar({
         <span>Precio:</span>
         <button
           className={selectedPrice === "low" ? "active" : ""}
-          onClick={() => handlePriceFilter("low")}
+          onClick={() => onFilterChange("low")}
         >
           Menor a $80
         </button>
         <button
           className={selectedPrice === "medium" ? "active" : ""}
-          onClick={() => handlePriceFilter("medium")}
+          onClick={() => onFilterChange("medium")}
         >
           $80 - $130
         </button>
         <button
           className={selectedPrice === "high" ? "active" : ""}
-          onClick={() => handlePriceFilter("high")}
+          onClick={() => onFilterChange("high")}
         >
           Mayor a $130
         </button>

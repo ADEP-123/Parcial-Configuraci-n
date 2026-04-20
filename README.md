@@ -176,3 +176,11 @@ Al no validar los props si se pasa un prop incorrecto o faltante React no avisa 
 
 - Installar PropTypes
 - Agregar validación de props con PropTypes en todos los componentes
+
+### Funciones intermedias innecesarias
+
+handleFilterChange, handlePriceFilter y handleClick solo reenviaban llamadas
+
+#### Solucion propuesta
+
+- Reemplazar por llamadas directas al prop en el evento onClick

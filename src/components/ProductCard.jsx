@@ -1,10 +1,6 @@
 import PropTypes from "prop-types";
 
 function ProductCard({ product, onAddToCart }) {
-  const handleClick = () => {
-    onAddToCart(product);
-  };
-
   return (
     <div className="product-card">
       <img src={product.image} alt={product.name} className="product-image" />
@@ -12,7 +8,7 @@ function ProductCard({ product, onAddToCart }) {
         <h3>{product.name}</h3>
         <p className="product-price">${product.price}</p>
         <p className="product-category">{product.category}</p>
-        <button className="add-button" onClick={handleClick}>
+        <button className="add-button" onClick={() => onAddToCart(product)}>
           Agregar al Carrito
         </button>
       </div>

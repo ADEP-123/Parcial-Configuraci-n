@@ -26,7 +26,7 @@ function App() {
       <header className="header">
         <h1>Tienda de Zapatos</h1>
         <button className="cart-button" onClick={() => setShowCart(!showCart)}>
-          Carrito ({cart.length})
+          Carrito ({cart.reduce((total, item) => total + item.quantity, 0)})
         </button>
       </header>
 

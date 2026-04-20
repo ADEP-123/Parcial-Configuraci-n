@@ -153,6 +153,14 @@ Una vez seleccionado un rango de precio no había forma de volver a ver todos lo
 
 - Agregar botón "Todos" al filtro de precio consistente con el filtro de categorías
 
+### Contador del carrito incorrecto
+
+El botón del carrito mostraba el número de productos distintos en lugar de la cantidad total de unidades.
+
+#### Solución propuesta
+
+- Reemplazar cart.length por un reduce que sume todas las quantities de los items
+
 ## Malas practicas de desarrollo
 
 ### Console log en produccion

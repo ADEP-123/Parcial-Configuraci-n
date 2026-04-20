@@ -92,4 +92,16 @@ Se plantea una tableta nueva de estilos siguiendo los principios de material des
 ### Problemas de imagenes:
 
 #### Solucion propuesta
+
 El recurso de imagenes que se estaba usando esta obsoleto, se cambia por el servicio actualizado
+
+## Problemas de logica en el codigo
+
+### Precio total de los items se recalcula cada que se abre el shopping cart pero no si se agregan mas items del mismo producto desde el, no se esta usando el prop total que ya recibe el componente
+
+![alt text](src/assets/error_logica_1.png)
+
+#### Solucion propuesta
+- Eliminar useState(cartTotal) y useEffect con dependencia vacía
+- El total se calculaba solo al montar el componente, ignorando cambios
+- Usar el prop `total` que llega desde App.jsx en lugar de recalcular

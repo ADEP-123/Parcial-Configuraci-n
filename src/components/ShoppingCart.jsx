@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function ShoppingCart({
   cart,
   onRemove,
@@ -74,5 +76,22 @@ function ShoppingCart({
     </div>
   );
 }
+
+ShoppingCart.propTypes = {
+  cart: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+      quantity: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
+  onRemove: PropTypes.func.isRequired,
+  onUpdateQuantity: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+  total: PropTypes.func.isRequired,
+  onCheckout: PropTypes.func.isRequired,
+};
 
 export default ShoppingCart;

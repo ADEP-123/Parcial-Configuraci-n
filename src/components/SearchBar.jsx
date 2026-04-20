@@ -1,13 +1,14 @@
-import { useState } from 'react'
+import { useState } from "react";
+import PropTypes from "prop-types";
 
 function SearchBar({ onSearch }) {
-  const [searchValue, setSearchValue] = useState('')
+  const [searchValue, setSearchValue] = useState("");
 
-  const handleInputChange = (e) => {
-    const value = e.target.value
-    setSearchValue(value)
-    onSearch(value)
-  }
+  const handleInputChange = e => {
+    const value = e.target.value;
+    setSearchValue(value);
+    onSearch(value);
+  };
 
   return (
     <div className="search-bar">
@@ -19,7 +20,11 @@ function SearchBar({ onSearch }) {
         className="search-input"
       />
     </div>
-  )
+  );
 }
 
-export default SearchBar
+SearchBar.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+};
+
+export default SearchBar;

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function FilterBar({
   currentFilter,
   onFilterChange,
@@ -53,5 +55,12 @@ function FilterBar({
     </div>
   );
 }
+
+FilterBar.propTypes = {
+  currentFilter: PropTypes.string.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
+  selectedPrice: PropTypes.string.isRequired,
+  onPriceChange: PropTypes.func.isRequired,
+};
 
 export default FilterBar;

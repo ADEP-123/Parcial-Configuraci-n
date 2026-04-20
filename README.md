@@ -161,8 +161,18 @@ Existe un array de data hardcodeada en el archivo app.jsx lo cual es una mala pr
 #### Solucion propuesta
 
 - Crear una nuevo archivo que contenga `products.js` la data con la direccion:
+
 ```
 ├── src/
 │   ├── data/
 │   │   ├── products.js
 ```
+
+### Ningún componente valida sus props
+
+Al no validar los props si se pasa un prop incorrecto o faltante React no avisa nada los errores aparecen silenciosamente en runtime
+
+#### Solucion propuesta
+
+- Installar PropTypes
+- Agregar validación de props con PropTypes en todos los componentes

@@ -1,7 +1,9 @@
+import PropTypes from "prop-types";
+
 function ProductCard({ product, onAddToCart }) {
   const handleClick = () => {
-    onAddToCart(product)
-  }
+    onAddToCart(product);
+  };
 
   return (
     <div className="product-card">
@@ -15,7 +17,19 @@ function ProductCard({ product, onAddToCart }) {
         </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default ProductCard
+ProductCard.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    category: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    stock: PropTypes.number.isRequired,
+  }).isRequired,
+  onAddToCart: PropTypes.func.isRequired,
+};
+
+export default ProductCard;

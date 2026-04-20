@@ -70,3 +70,21 @@ Este proyecto fue creado como ejercicio práctico para la materia "Configuració
 ---
 
 **Nota para estudiantes**: El sistema contiene errores intencionales que deben ser identificados y corregidos. ¡Éxito en tu evaluación!
+
+---
+
+# Resolviendo parcial:
+
+## Problemas de estilos:
+
+### Filtros no se pueden leer si no estan seleccionados
+
+![alt text](src/assets/error_estilo_1.png)
+
+### Carrito de compras ilegible
+
+![alt text](src/assets/error_estilo_2.png)
+
+#### Solucion propuesta:
+
+Se plantea una tableta nueva de estilos siguiendo los principios de material design manteniendo los colores azul y gris como principales

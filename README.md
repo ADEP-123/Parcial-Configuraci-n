@@ -297,3 +297,11 @@ El botón "Agregar al Carrito" siempre se ve igual aunque el producto ya no teng
 #### Solucion propuesta:
 
 - Deshabilitar botón al alcanzar stock máximo
+
+### No hay confirmación antes de eliminar un item
+
+Al hacer click en "Eliminar" el producto desaparece inmediatamente sin ninguna confirmación, fácil de hacer por accidente
+
+#### Solucion propuesta:
+
+- Agregar confirmación antes de eliminar item del carrito

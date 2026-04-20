@@ -58,7 +58,11 @@ const ShoppingCart = memo(function ShoppingCart({
                 </div>
                 <button
                   className="remove-button"
-                  onClick={() => onRemove(item.id)}
+                  onClick={() => {
+                    if (window.confirm(`¿Eliminar ${item.name} del carrito?`)) {
+                      onRemove(item.id);
+                    }
+                  }}
                 >
                   Eliminar
                 </button>

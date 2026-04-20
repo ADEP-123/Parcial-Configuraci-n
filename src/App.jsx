@@ -88,7 +88,7 @@ function App() {
 
       <main className="main-content">
         <div className="filters-section">
-          <SearchBar onSearch={handleSearch} />
+          <SearchBar value={searchTerm} onSearch={handleSearch} />
           <FilterBar
             currentFilter={filter}
             onFilterChange={setFilter}

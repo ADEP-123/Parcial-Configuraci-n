@@ -184,3 +184,11 @@ handleFilterChange, handlePriceFilter y handleClick solo reenviaban llamadas
 #### Solucion propuesta
 
 - Reemplazar por llamadas directas al prop en el evento onClick
+
+### Estado duplicado con el padre en SearchBar
+
+SearchBar no necesita recordar el valor, eso ya lo hace App.jsx
+
+#### Solucion propuesta
+
+- Convertir a componente controlado con prop value

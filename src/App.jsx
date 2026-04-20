@@ -78,7 +78,6 @@ function App() {
   const [filter, setFilter] = useState("Todos");
   const [searchTerm, setSearchTerm] = useState("");
   const [showCart, setShowCart] = useState(false);
-  const [x, setX] = useState(0);
 
   useEffect(() => {
     console.log("Products loaded");
@@ -94,10 +93,6 @@ function App() {
     });
     setProducts(filtered);
   }, [filter, searchTerm]);
-
-  useEffect(() => {
-    setX(x + 1);
-  }, [products]);
 
   const addToCart = product => {
     const existingItem = cart.find(item => item.id === product.id);

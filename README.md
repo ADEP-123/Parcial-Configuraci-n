@@ -122,3 +122,9 @@ El recurso de imagenes que se estaba usando esta obsoleto, se cambia por el serv
 #### Solucion propuesta
 
 - Unificar en un solo useEffect con dependencias [filter, searchTerm]
+
+### use state que nunca se usa presente en el codigo causando renderizados innecesarios
+
+#### Solucion propuesta
+
+- Eliminarlo

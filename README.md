@@ -102,6 +102,15 @@ El recurso de imagenes que se estaba usando esta obsoleto, se cambia por el serv
 ![alt text](src/assets/error_logica_1.png)
 
 #### Solucion propuesta
+
 - Eliminar useState(cartTotal) y useEffect con dependencia vacía
 - El total se calculaba solo al montar el componente, ignorando cambios
 - Usar el prop `total` que llega desde App.jsx en lugar de recalcular
+
+### El carrito nunca se vaciaba visualmente al finalizar la compra, se esta mutando el prop cart en checkout (lo cual viola principios de react)
+
+![alt text](src/assets/error_logica_2.png)
+
+#### Solucion propuesta
+
+- Agregar prop onCheckout y función clearCart en App.jsx

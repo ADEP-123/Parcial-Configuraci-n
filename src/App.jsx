@@ -127,6 +127,10 @@ function App() {
     );
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   const getTotal = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
@@ -172,6 +176,7 @@ function App() {
           onUpdateQuantity={updateQuantity}
           onClose={() => setShowCart(false)}
           total={getTotal}
+          onCheckout={clearCart}
         />
       )}
     </div>

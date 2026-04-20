@@ -1,7 +1,14 @@
-function ShoppingCart({ cart, onRemove, onUpdateQuantity, onClose, total }) {
+function ShoppingCart({
+  cart,
+  onRemove,
+  onUpdateQuantity,
+  onClose,
+  total,
+  onCheckout,
+}) {
   const handleCheckout = () => {
     alert("Compra realizada con éxito");
-    cart = [];
+    onCheckout();
   };
 
   const getSubtotal = (price, qty) => {

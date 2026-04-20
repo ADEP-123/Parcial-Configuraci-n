@@ -81,10 +81,6 @@ function App() {
   const [showCart, setShowCart] = useState(false);
 
   useEffect(() => {
-    console.log("Products loaded");
-  }, []);
-
-  useEffect(() => {
     const filtered = productData.filter(product => {
       const matchesCategory = filter === "Todos" || product.category === filter;
       const matchesSearch = product.name

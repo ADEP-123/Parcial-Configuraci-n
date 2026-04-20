@@ -143,3 +143,13 @@ El recurso de imagenes que se estaba usando esta obsoleto, se cambia por el serv
 #### Solucion propuesta
 
 - Eliminarlas
+
+## Malas practicas de desarrollo
+
+### Console log en produccion
+
+Existe un console log en app.jsx que se olvido eliminar
+
+#### Solucion propuesta
+
+- Eliminarlo

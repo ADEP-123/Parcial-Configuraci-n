@@ -1,14 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { productData } from "../data/products";
 
 export function useProductFilter() {
-  const [products, setProducts] = useState(productData);
   const [filter, setFilter] = useState("Todos");
   const [searchTerm, setSearchTerm] = useState("");
   const [priceFilter, setPriceFilter] = useState("all");
 
-  useEffect(() => {
-    const filtered = productData.filter(product => {
+  const products = useMemo(() => {
+    return productData.filter(product => {
       const matchesCategory = filter === "Todos" || product.category === filter;
       const matchesSearch = product.name
         .toLowerCase()
@@ -26,7 +25,6 @@ export function useProductFilter() {
 
       return matchesCategory && matchesSearch && matchesPrice;
     });
-    setProducts(filtered);
   }, [filter, searchTerm, priceFilter]);
 
   return {

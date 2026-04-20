@@ -244,3 +244,11 @@ getTotal es una función que se recrea en cada render y recalcula el total desde
 #### Solucion propuesta
 
 - Reemplazar getTotal por useMemo para evitar recálculos
+
+### Estado products es derivado en useProductFilter
+
+Products no es un estado independiente, es siempre una versión filtrada de productData, tener dos fuentes de verdad (productData + products) es un anti-patrón
+
+#### Solucion propuesta
+
+- Reemplazar useState+useEffect por useMemo para productos filtrados

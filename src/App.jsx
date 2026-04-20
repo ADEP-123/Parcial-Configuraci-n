@@ -77,6 +77,7 @@ function App() {
   const [products, setProducts] = useState(productData);
   const [filter, setFilter] = useState("Todos");
   const [searchTerm, setSearchTerm] = useState("");
+  const [priceFilter, setPriceFilter] = useState("all");
   const [showCart, setShowCart] = useState(false);
 
   useEffect(() => {
@@ -89,10 +90,21 @@ function App() {
       const matchesSearch = product.name
         .toLowerCase()
         .includes(searchTerm.toLowerCase());
-      return matchesCategory && matchesSearch;
+      const matchesPrice =
+        priceFilter === "all"
+          ? true
+          : priceFilter === "low"
+            ? product.price < 80
+            : priceFilter === "medium"
+              ? product.price >= 80 && product.price <= 130
+              : priceFilter === "high"
+                ? product.price > 130
+                : true;
+
+      return matchesCategory && matchesSearch && matchesPrice;
     });
     setProducts(filtered);
-  }, [filter, searchTerm]);
+  }, [filter, searchTerm, priceFilter]);
 
   const addToCart = product => {
     const existingItem = cart.find(item => item.id === product.id);
@@ -147,7 +159,12 @@ function App() {
       <main className="main-content">
         <div className="filters-section">
           <SearchBar onSearch={handleSearch} />
-          <FilterBar currentFilter={filter} onFilterChange={setFilter} />
+          <FilterBar
+            currentFilter={filter}
+            onFilterChange={setFilter}
+            selectedPrice={priceFilter}
+            onPriceChange={setPriceFilter}
+          />
         </div>
 
         <div className="products-grid">

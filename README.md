@@ -123,8 +123,17 @@ El recurso de imagenes que se estaba usando esta obsoleto, se cambia por el serv
 
 - Unificar en un solo useEffect con dependencias [filter, searchTerm]
 
-### use state que nunca se usa presente en el codigo causando renderizados innecesarios
+### Use state que nunca se usa presente en el codigo causando renderizados innecesarios
 
 #### Solucion propuesta
 
 - Eliminarlo
+
+### Filtro de precio no hace nada
+
+![alt text](src/assets/error_logica_5.png)
+
+#### Solucion propuesta
+
+- Conectar filtro de precio con el estado de App.jsx
+- Convertir a componente controlado con props selectedPrice/onPriceChange

@@ -27,19 +27,19 @@ function FilterBar({
         <span>Precio:</span>
         <button
           className={selectedPrice === "low" ? "active" : ""}
-          onClick={() => onFilterChange("low")}
+          onClick={() => onPriceChange("low")}
         >
           Menor a $80
         </button>
         <button
           className={selectedPrice === "medium" ? "active" : ""}
-          onClick={() => onFilterChange("medium")}
+          onClick={() => onPriceChange("medium")}
         >
           $80 - $130
         </button>
         <button
           className={selectedPrice === "high" ? "active" : ""}
-          onClick={() => onFilterChange("high")}
+          onClick={() => onPriceChange("high")}
         >
           Mayor a $130
         </button>

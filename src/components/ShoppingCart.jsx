@@ -67,7 +67,7 @@ function ShoppingCart({
         </div>
 
         <div className="cart-footer">
-          <p className="cart-total">Total: ${total().toFixed(2)}</p>
+          <p className="cart-total">Total: ${total.toFixed(2)}</p>
           <button className="checkout-button" onClick={handleCheckout}>
             Finalizar Compra
           </button>
@@ -90,7 +90,7 @@ ShoppingCart.propTypes = {
   onRemove: PropTypes.func.isRequired,
   onUpdateQuantity: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
-  total: PropTypes.func.isRequired,
+  total: PropTypes.number.isRequired,
   onCheckout: PropTypes.func.isRequired,
 };
 

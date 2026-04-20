@@ -235,4 +235,12 @@ Usar el estado directamente en las actualizaciones es un anti-patrón. En React,
 
 #### Solucion propuesta
 
-- usar forma funcional del setter para actualizaciones de estado
+- Usar forma funcional del setter para actualizaciones de estado
+
+### En usecart getTotal recalcula en cada render
+
+getTotal es una función que se recrea en cada render y recalcula el total desde cero cada vez que se llama Si el carrito tiene muchos items y el componente re-renderiza frecuentemente este cálculo se repite innecesariamente
+
+#### Solucion propuesta
+
+- Reemplazar getTotal por useMemo para evitar recálculos

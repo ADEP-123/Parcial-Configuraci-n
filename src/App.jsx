@@ -8,14 +8,8 @@ import { useCart } from "./hooks/useCart";
 import { useProductFilter } from "./hooks/useProductFilter";
 
 function App() {
-  const {
-    cart,
-    addToCart,
-    removeFromCart,
-    updateQuantity,
-    clearCart,
-    getTotal,
-  } = useCart();
+  const { cart, addToCart, removeFromCart, updateQuantity, clearCart, total } =
+    useCart();
   const {
     products,
     filter,
@@ -64,7 +58,7 @@ function App() {
           onRemove={removeFromCart}
           onUpdateQuantity={updateQuantity}
           onClose={() => setShowCart(false)}
-          total={getTotal}
+          total={total}
           onCheckout={clearCart}
         />
       )}

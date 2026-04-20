@@ -1,6 +1,7 @@
+import { memo } from "react";
 import PropTypes from "prop-types";
 
-function ProductCard({ product, onAddToCart }) {
+const ProductCard = memo(function ProductCard({ product, onAddToCart }) {
   return (
     <div className="product-card">
       <img src={product.image} alt={product.name} className="product-image" />
@@ -14,7 +15,7 @@ function ProductCard({ product, onAddToCart }) {
       </div>
     </div>
   );
-}
+});
 
 ProductCard.propTypes = {
   product: PropTypes.shape({

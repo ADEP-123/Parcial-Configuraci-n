@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 
 export function useCart() {
   const [cart, setCart] = useState([]);
@@ -8,7 +8,7 @@ export function useCart() {
     [cart],
   );
 
-  const addToCart = product => {
+  const addToCart = useCallback(product => {
     setCart(prevCart => {
       const existingItem = prevCart.find(item => item.id === product.id);
       if (existingItem) {
@@ -20,22 +20,22 @@ export function useCart() {
       }
       return [...prevCart, { ...product, quantity: 1 }];
     });
-  };
+  }, []);
 
-  const removeFromCart = productId => {
+  const removeFromCart = useCallback(productId => {
     setCart(prevCart => prevCart.filter(item => item.id !== productId));
-  };
+  }, []);
 
-  const updateQuantity = (productId, newQuantity) => {
+  const updateQuantity = useCallback((productId, newQuantity) => {
     if (newQuantity < 1) return;
     setCart(prevCart =>
       prevCart.map(item =>
         item.id === productId ? { ...item, quantity: newQuantity } : item,
       ),
     );
-  };
+  }, []);
 
-  const clearCart = () => setCart([]);
+  const clearCart = useCallback(() => setCart([]), []);
 
   return {
     cart,

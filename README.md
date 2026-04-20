@@ -252,3 +252,14 @@ Products no es un estado independiente, es siempre una versión filtrada de prod
 #### Solucion propuesta
 
 - Reemplazar useState+useEffect por useMemo para productos filtrados
+
+## Problemas de rendimiento
+
+### Componentes se re-renderizan innecesariamente
+
+Cada vez que App re-renderiza, React vuelve a renderizar ProductCard, FilterBar y SearchBar aunque sus props no hayan cambiado Por ejemplo: abrir/cerrar el carrito (showCart) causa que toda la lista de productos se re-renderice innecesariamente
+
+#### Solucion propuesta
+
+- memo en los componentes
+- useCallback en las funciones que se pasan como props

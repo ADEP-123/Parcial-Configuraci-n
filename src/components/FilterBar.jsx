@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { CATEGORIES } from "../data/products";
 
 function FilterBar({
   currentFilter,
@@ -6,13 +7,11 @@ function FilterBar({
   selectedPrice,
   onPriceChange,
 }) {
-  const categories = ["Todos", "Deportivo", "Formal", "Casual", "Botas"];
-
   return (
     <div className="filter-bar">
       <div className="category-filters">
         <span>Filtrar por:</span>
-        {categories.map(cat => (
+        {CATEGORIES.map(cat => (
           <button
             key={cat}
             className={currentFilter === cat ? "active" : ""}

@@ -70,3 +70,8 @@ export const PRICE_RANGES = {
   medium: { min: 80, max: 130 },
   high: { min: 130 },
 };
+
+export const CATEGORIES = [
+  "Todos",
+  ...new Set(productData.map(product => product.category)),
+];

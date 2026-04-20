@@ -322,4 +322,12 @@ La lógica de los rangos de precio está definida una sola vez en useProductFilt
 
 #### Solucion propuesta
 
-Centralizar rangos de precio en PRICE_RANGES
+- Centralizar rangos de precio en PRICE_RANGES
+
+### Las categorías están definidas en dos lugares
+
+Si se agrega una categoría nueva en products.js hay que acordarse de actualizarla también en FilterBar.jsx
+
+### Solucion propuesta
+
+- Derivar categorías desde productData en lugar de hardcodearlas

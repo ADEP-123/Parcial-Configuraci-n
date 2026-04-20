@@ -75,3 +75,5 @@ export const CATEGORIES = [
   "Todos",
   ...new Set(productData.map(product => product.category)),
 ];
+
+export const DEFAULT_PRICE_FILTER = "all";

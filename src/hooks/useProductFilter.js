@@ -1,11 +1,15 @@
 import { useState, useMemo, useEffect } from "react";
-import { productData, PRICE_RANGES } from "../data/products";
+import {
+  productData,
+  PRICE_RANGES,
+  DEFAULT_PRICE_FILTER,
+} from "../data/products";
 
 export function useProductFilter() {
   const [filter, setFilter] = useState("Todos");
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
-  const [priceFilter, setPriceFilter] = useState("all");
+  const [priceFilter, setPriceFilter] = useState(DEFAULT_PRICE_FILTER);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -21,7 +25,7 @@ export function useProductFilter() {
         .toLowerCase()
         .includes(debouncedSearch.toLowerCase());
       const matchesPrice =
-        priceFilter === "all"
+        priceFilter === DEFAULT_PRICE_FILTER
           ? true
           : priceFilter === "low"
             ? product.price < PRICE_RANGES.low.max

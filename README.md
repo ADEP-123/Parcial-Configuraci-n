@@ -328,6 +328,14 @@ La lógica de los rangos de precio está definida una sola vez en useProductFilt
 
 Si se agrega una categoría nueva en products.js hay que acordarse de actualizarla también en FilterBar.jsx
 
-### Solucion propuesta
+#### Solucion propuesta
 
 - Derivar categorías desde productData en lugar de hardcodearlas
+
+### El valor inicial "all" del filtro de precio repetido
+
+Se usa en varias partes hardcodeado como "all"
+
+#### Solucion propuesta
+
+- Extraer valor inicial del filtro de precio a constante

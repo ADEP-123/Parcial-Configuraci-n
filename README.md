@@ -279,3 +279,13 @@ setSearchTerm se pasa directamente, aunque es estable, es una práctica que acop
 #### Solucion propuesta:
 
 - Agregar debounce al filtrado por búsqueda
+
+## Falta de validaciones
+
+### No se valida el stock al agregar productos
+
+Se puede agregar un producto al carrito sin límite aunque el stock sea 5 y ya tengas 5 en el carrito puedes seguir agregando indefinidamente
+
+#### Solucion propuesta:
+
+- Validar stock disponible al agregar productos al carrito

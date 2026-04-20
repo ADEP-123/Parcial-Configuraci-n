@@ -12,6 +12,7 @@ export function useCart() {
     setCart(prevCart => {
       const existingItem = prevCart.find(item => item.id === product.id);
       if (existingItem) {
+        if (existingItem.quantity >= product.stock) return prevCart;
         return prevCart.map(item =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
@@ -28,11 +29,13 @@ export function useCart() {
 
   const updateQuantity = useCallback((productId, newQuantity) => {
     if (newQuantity < 1) return;
-    setCart(prevCart =>
-      prevCart.map(item =>
+    setCart(prevCart => {
+      const item = prevCart.find(item => item.id === productId);
+      if (item && newQuantity > item.stock) return prevCart;
+      return prevCart.map(item =>
         item.id === productId ? { ...item, quantity: newQuantity } : item,
-      ),
-    );
+      );
+    });
   }, []);
 
   const clearCart = useCallback(() => setCart([]), []);

@@ -192,3 +192,21 @@ SearchBar no necesita recordar el valor, eso ya lo hace App.jsx
 #### Solucion propuesta
 
 - Convertir a componente controlado con prop value
+
+## Problemas de estructura de componentes
+
+### Lógica de filtrado dentro del componente app.jsx
+
+App debería ocuparse solo de coordinar la UI Si la lógica crece, el componente se vuelve difícil de mantener y probar
+
+#### Solucion propuesta
+
+- Crear useProductFilter.js con estados y useEffect en la ruta:
+
+```
+├── src/
+│   ├── hooks/
+│   │   ├── produuseProductFiltercts.js
+```
+
+- App.jsx se enfoca solo en coordinar la UI

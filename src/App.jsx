@@ -4,37 +4,20 @@ import ProductCard from "./components/ProductCard";
 import ShoppingCart from "./components/ShoppingCart";
 import FilterBar from "./components/FilterBar";
 import SearchBar from "./components/SearchBar";
-import { productData } from "./data/products";
+import { useProductFilter } from "./hooks/useProductFilter";
 
 function App() {
   const [cart, setCart] = useState([]);
-  const [products, setProducts] = useState(productData);
-  const [filter, setFilter] = useState("Todos");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [priceFilter, setPriceFilter] = useState("all");
   const [showCart, setShowCart] = useState(false);
-
-  useEffect(() => {
-    const filtered = productData.filter(product => {
-      const matchesCategory = filter === "Todos" || product.category === filter;
-      const matchesSearch = product.name
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase());
-      const matchesPrice =
-        priceFilter === "all"
-          ? true
-          : priceFilter === "low"
-            ? product.price < 80
-            : priceFilter === "medium"
-              ? product.price >= 80 && product.price <= 130
-              : priceFilter === "high"
-                ? product.price > 130
-                : true;
-
-      return matchesCategory && matchesSearch && matchesPrice;
-    });
-    setProducts(filtered);
-  }, [filter, searchTerm, priceFilter]);
+  const {
+    products,
+    filter,
+    setFilter,
+    searchTerm,
+    setSearchTerm,
+    priceFilter,
+    setPriceFilter,
+  } = useProductFilter();
 
   const addToCart = product => {
     const existingItem = cart.find(item => item.id === product.id);
@@ -73,10 +56,6 @@ function App() {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
-  const handleSearch = term => {
-    setSearchTerm(term);
-  };
-
   return (
     <div className="app-container">
       <header className="header">
@@ -88,7 +67,7 @@ function App() {
 
       <main className="main-content">
         <div className="filters-section">
-          <SearchBar value={searchTerm} onSearch={handleSearch} />
+          <SearchBar value={searchTerm} onSearch={setSearchTerm} />
           <FilterBar
             currentFilter={filter}
             onFilterChange={setFilter}

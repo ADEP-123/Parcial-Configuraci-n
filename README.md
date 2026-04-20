@@ -271,3 +271,11 @@ ShoppingCart solo se monta/desmonta según showCart pero mientras está abierto,
 #### Solucion propuesta
 
 - Evitar re-renders innecesarios con memo
+
+### setSearchTerm pasado directamente como prop en App.jsx
+
+setSearchTerm se pasa directamente, aunque es estable, es una práctica que acopla SearchBar directamente al setter del hook, dificultando agregar lógica futura como debounce
+
+#### Solucion propuesta:
+
+- Agregar debounce al filtrado por búsqueda

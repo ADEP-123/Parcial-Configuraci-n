@@ -1,17 +1,25 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { productData } from "../data/products";
 
 export function useProductFilter() {
   const [filter, setFilter] = useState("Todos");
   const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
   const [priceFilter, setPriceFilter] = useState("all");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(searchTerm);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
 
   const products = useMemo(() => {
     return productData.filter(product => {
       const matchesCategory = filter === "Todos" || product.category === filter;
       const matchesSearch = product.name
         .toLowerCase()
-        .includes(searchTerm.toLowerCase());
+        .includes(debouncedSearch.toLowerCase());
       const matchesPrice =
         priceFilter === "all"
           ? true
@@ -25,7 +33,7 @@ export function useProductFilter() {
 
       return matchesCategory && matchesSearch && matchesPrice;
     });
-  }, [filter, searchTerm, priceFilter]);
+  }, [filter, debouncedSearch, priceFilter]);
 
   return {
     products,

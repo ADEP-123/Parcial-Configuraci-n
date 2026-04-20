@@ -226,3 +226,13 @@ Igual que el filtrado, toda la lógica del carrito vive dentro de App — addToC
 ```
 
 - App.jsx queda enfocado exclusivamente en la UI
+
+## Problemas de manejo de estados
+
+### En usecart las actualizaciones de estado estan basadas en estado anterior
+
+Usar el estado directamente en las actualizaciones es un anti-patrón. En React, múltiples llamadas seguidas pueden leer un estado desactualizado porque el estado no se actualiza de forma síncrona
+
+#### Solucion propuesta
+
+- usar forma funcional del setter para actualizaciones de estado

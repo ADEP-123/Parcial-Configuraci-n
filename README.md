@@ -88,3 +88,8 @@ Este proyecto fue creado como ejercicio práctico para la materia "Configuració
 #### Solucion propuesta:
 
 Se plantea una tableta nueva de estilos siguiendo los principios de material design manteniendo los colores azul y gris como principales
+
+### Problemas de imagenes:
+
+#### Solucion propuesta
+El recurso de imagenes que se estaba usando esta obsoleto, se cambia por el servicio actualizado

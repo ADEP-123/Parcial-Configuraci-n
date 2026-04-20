@@ -11,14 +11,6 @@ function ShoppingCart({
     onCheckout();
   };
 
-  const getSubtotal = (price, qty) => {
-    return price * qty;
-  };
-
-  const calculateItemTotal = item => {
-    return item.price * item.quantity;
-  };
-
   return (
     <div className="cart-overlay">
       <div className="cart-modal">

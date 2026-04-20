@@ -137,3 +137,9 @@ El recurso de imagenes que se estaba usando esta obsoleto, se cambia por el serv
 
 - Conectar filtro de precio con el estado de App.jsx
 - Convertir a componente controlado con props selectedPrice/onPriceChange
+
+### Funciones internas duplicadas e inutilizadas
+
+#### Solucion propuesta
+
+- Eliminarlas

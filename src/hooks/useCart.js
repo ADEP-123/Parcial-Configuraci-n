@@ -4,7 +4,7 @@ export function useCart() {
   const [cart, setCart] = useState([]);
 
   const total = useMemo(
-    () => cart.reduce((acc, item) => acc + item.price * item.quantity, 0),
+    () => cart.reduce((total, item) => total + item.price * item.quantity, 0),
     [cart],
   );
 

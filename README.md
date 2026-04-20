@@ -339,3 +339,11 @@ Se usa en varias partes hardcodeado como "all"
 #### Solucion propuesta
 
 - Extraer valor inicial del filtro de precio a constante
+
+### acc en los reduce
+
+acc es poco diciente
+
+#### Solucion propuesta
+
+- Darle otro nombre como total

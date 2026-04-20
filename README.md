@@ -210,3 +210,19 @@ App debería ocuparse solo de coordinar la UI Si la lógica crece, el componente
 ```
 
 - App.jsx se enfoca solo en coordinar la UI
+
+### Lógica del carrito mezclada con la UI
+
+Igual que el filtrado, toda la lógica del carrito vive dentro de App — addToCart, removeFromCart, updateQuantity, clearCart, getTotal son lógica de negocio que no pertenece al componente de UI
+
+#### Solucion propuesta
+
+- Crear useCart.js en la ruta:
+
+```
+├── src/
+│   ├── hooks/
+│   │   ├── useCart.js
+```
+
+- App.jsx queda enfocado exclusivamente en la UI

@@ -1,14 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 import ProductCard from "./components/ProductCard";
 import ShoppingCart from "./components/ShoppingCart";
 import FilterBar from "./components/FilterBar";
 import SearchBar from "./components/SearchBar";
+import { useCart } from "./hooks/useCart";
 import { useProductFilter } from "./hooks/useProductFilter";
 
 function App() {
-  const [cart, setCart] = useState([]);
-  const [showCart, setShowCart] = useState(false);
+  const {
+    cart,
+    addToCart,
+    removeFromCart,
+    updateQuantity,
+    clearCart,
+    getTotal,
+  } = useCart();
   const {
     products,
     filter,
@@ -18,43 +25,7 @@ function App() {
     priceFilter,
     setPriceFilter,
   } = useProductFilter();
-
-  const addToCart = product => {
-    const existingItem = cart.find(item => item.id === product.id);
-    if (existingItem) {
-      setCart(
-        cart.map(item =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item,
-        ),
-      );
-    } else {
-      setCart([...cart, { ...product, quantity: 1 }]);
-    }
-  };
-
-  const removeFromCart = productId => {
-    const updatedCart = cart.filter(item => item.id !== productId);
-    setCart(updatedCart);
-  };
-
-  const updateQuantity = (productId, newQuantity) => {
-    if (newQuantity < 1) return;
-    setCart(
-      cart.map(item =>
-        item.id === productId ? { ...item, quantity: newQuantity } : item,
-      ),
-    );
-  };
-
-  const clearCart = () => {
-    setCart([]);
-  };
-
-  const getTotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
+  const [showCart, setShowCart] = useState(false);
 
   return (
     <div className="app-container">

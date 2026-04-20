@@ -11,13 +11,13 @@ function FilterBar({
     <div className="filter-bar">
       <div className="category-filters">
         <span>Filtrar por:</span>
-        {CATEGORIES.map(cat => (
+        {CATEGORIES.map(category => (
           <button
-            key={cat}
-            className={currentFilter === cat ? "active" : ""}
-            onClick={() => onFilterChange(cat)}
+            key={category}
+            className={currentFilter === category ? "active" : ""}
+            onClick={() => onFilterChange(category)}
           >
-            {cat}
+            {category}
           </button>
         ))}
       </div>

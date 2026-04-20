@@ -347,3 +347,11 @@ acc es poco diciente
 #### Solucion propuesta
 
 - Darle otro nombre como total
+
+### cat en el map de categorías
+
+cat es poco diciente
+
+#### Solucion propuesta
+
+- Darle otro nombre como Category

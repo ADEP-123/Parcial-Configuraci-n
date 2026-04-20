@@ -10,8 +10,10 @@ const ShoppingCart = memo(function ShoppingCart({
   onCheckout,
 }) {
   const handleCheckout = () => {
-    alert("Compra realizada con éxito");
-    onCheckout();
+    if (window.confirm("¿Confirmar la compra?")) {
+      alert("Compra realizada con éxito");
+      onCheckout();
+    }
   };
 
   return (

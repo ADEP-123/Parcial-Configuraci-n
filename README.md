@@ -305,3 +305,11 @@ Al hacer click en "Eliminar" el producto desaparece inmediatamente sin ninguna c
 #### Solucion propuesta:
 
 - Agregar confirmación antes de eliminar item del carrito
+
+### No hay confirmación antes de finalizar la compra
+
+Al hacer click en "Finalizar compra" la compra se ejecta sin ninguna confirmación, fácil de hacer por accidente
+
+#### Solucion propuesta:
+
+- Agregar confirmación antes de finalizar compra item del carrito

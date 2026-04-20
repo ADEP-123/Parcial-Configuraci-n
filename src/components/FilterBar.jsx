@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { CATEGORIES } from "../data/products";
+import { CATEGORIES, DEFAULT_PRICE_FILTER } from "../data/products";
 
 function FilterBar({
   currentFilter,
@@ -24,6 +24,12 @@ function FilterBar({
 
       <div className="price-filters">
         <span>Precio:</span>
+        <button
+          className={selectedPrice === DEFAULT_PRICE_FILTER ? "active" : ""}
+          onClick={() => onPriceChange(DEFAULT_PRICE_FILTER)}
+        >
+          Todos
+        </button>
         <button
           className={selectedPrice === "low" ? "active" : ""}
           onClick={() => onPriceChange("low")}

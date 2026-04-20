@@ -144,6 +144,15 @@ El recurso de imagenes que se estaba usando esta obsoleto, se cambia por el serv
 
 - Eliminarlas
 
+### Filtro de precio sin opción de resetear
+
+Una vez seleccionado un rango de precio no había forma de volver a ver todos los productos.
+![alt text](src/assets/error_logica_7.png)
+
+#### Solución propuesta
+
+- Agregar botón "Todos" al filtro de precio consistente con el filtro de categorías
+
 ## Malas practicas de desarrollo
 
 ### Console log en produccion

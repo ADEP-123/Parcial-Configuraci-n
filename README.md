@@ -89,6 +89,31 @@ Este proyecto fue creado como ejercicio práctico para la materia "Configuració
 
 Se plantea una tableta nueva de estilos siguiendo los principios de material design manteniendo los colores azul y gris como principales
 
+### Sistema de temas Dark / Light Mode
+
+La aplicación solo contaba con un tema oscuro fijo sin posibilidad de cambiar
+a modo claro, lo cual limita la accesibilidad y preferencias del usuario.
+
+#### Solución propuesta
+
+![alt text](src/assets/error_estilo_3.png)
+
+Se implementa un sistema de temas completo basado en **Material Design**:
+
+- Agregar `[data-theme="dark"]` y `[data-theme="light"]` en `index.css` con
+  tokens CSS independientes para cada tema (superficies, bordes, texto,
+  sombras y colores semánticos)
+- El tema oscuro preserva la esencia actual (`#0f0f1a` base, índigo/teal)
+- El tema claro usa fondos `#eef0ff`, superficies blancas y sombras con
+  tinte índigo
+- Agregar transición global `0.3s` en todos los elementos para que el cambio
+  de tema sea animado
+- Crear componente `ThemeToggle.jsx` en `src/components/` con un pill switch
+  animado (🌙 / ☀️) con thumb deslizante y efecto elástico
+- Integrar lógica en `App.jsx` con `useState` + `useEffect` que escribe
+  `data-theme` en `document.documentElement` y persiste la preferencia en
+  `localStorage`
+
 ### Problemas de imagenes:
 
 #### Solucion propuesta

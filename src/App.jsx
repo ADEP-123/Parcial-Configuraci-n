@@ -39,7 +39,10 @@ function App() {
   return (
     <div className="app-container">
       <header className="header">
-        <h1> Tienda de Zapatos</h1>
+        <div className="header-brand">
+          <img src="/logo.png" alt="Logo" className="header-logo" />
+          <h1>Tienda de Zapatos</h1>
+        </div>
         <div className="header-actions">
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
           <button

@@ -126,6 +126,19 @@ Todos los productos tenían la misma imagen genérica de `placehold.co` que adem
 - Agregar fallback `onError` por si una URL de Unsplash falla, mostrando un placeholder con los colores del tema en lugar de un ícono roto
 - Agregar atributo `loading="lazy"` para no bloquear el render inicial
 
+### Logo e ícono de pestaña personalizados
+
+La pestaña del navegador mostraba el título genérico "tienda-zapatos" sin ícono ni descripción.
+
+#### Solución propuesta
+
+- Crear `public/logo.png`: logo personalizado con bolsa de compras y zapatilla superpuesta usando los colores del tema (azul marino y rojo), fondo transparente, tamaño 520×560px
+- Actualizar `index.html` enlazando el logo como favicon con `<link rel="icon">` y `<link rel="apple-touch-icon">` para móviles
+- Cambiar el `<title>` de `"tienda-zapatos"` a `"👟 Tienda de Zapatos"`
+- Agregar `<meta name="description">` con descripción de la tienda
+- Agregar `<meta name="theme-color">` para dark y light mode, colorea la barra del navegador en móvil según el tema activo
+- Corregir `lang="en"` a `lang="es"` en el `<html>`
+
 ## Problemas de logica en el codigo
 
 ### Precio total de los items se recalcula cada que se abre el shopping cart pero no si se agregan mas items del mismo producto desde el, no se esta usando el prop total que ya recibe el componente

@@ -7,6 +7,8 @@ import SearchBar from "./components/SearchBar";
 import ThemeToggle from "./components/ThemeToggle";
 import { useCart } from "./hooks/useCart";
 import { useProductFilter } from "./hooks/useProductFilter";
+import ToastContainer from "./components/ToastContainer";
+import { useToast } from "./hooks/useToast";
 
 function App() {
   const { cart, addToCart, removeFromCart, updateQuantity, clearCart, total } =
@@ -22,7 +24,8 @@ function App() {
   } = useProductFilter();
   const [showCart, setShowCart] = useState(false);
 
-  // ── Tema ──────────────────────────────────────────────────────────────────
+  const { toasts, showToast, removeToast } = useToast();
+
   const [theme, setTheme] = useState(
     () => localStorage.getItem("theme") ?? "dark",
   );
@@ -34,7 +37,6 @@ function App() {
 
   const toggleTheme = () =>
     setTheme(prev => (prev === "dark" ? "light" : "dark"));
-  // ─────────────────────────────────────────────────────────────────────────
 
   return (
     <div className="app-container">
@@ -88,8 +90,11 @@ function App() {
           onClose={() => setShowCart(false)}
           total={total}
           onCheckout={clearCart}
+          onToast={showToast}
         />
       )}
+
+      <ToastContainer toasts={toasts} onRemove={removeToast} />
     </div>
   );
 }

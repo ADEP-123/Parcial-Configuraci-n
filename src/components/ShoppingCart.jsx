@@ -8,11 +8,13 @@ const ShoppingCart = memo(function ShoppingCart({
   onClose,
   total,
   onCheckout,
+  onToast,
 }) {
   const handleCheckout = () => {
     if (window.confirm("¿Confirmar la compra?")) {
-      alert("Compra realizada con éxito");
       onCheckout();
+      onClose();
+      onToast({ message: "¡Compra realizada con éxito!", type: "success" });
     }
   };
 
@@ -99,6 +101,7 @@ ShoppingCart.propTypes = {
   onClose: PropTypes.func.isRequired,
   total: PropTypes.number.isRequired,
   onCheckout: PropTypes.func.isRequired,
+  onToast: PropTypes.func.isRequired,
 };
 
 export default ShoppingCart;

@@ -139,6 +139,24 @@ La pestaña del navegador mostraba el título genérico "tienda-zapatos" sin íc
 - Agregar `<meta name="theme-color">` para dark y light mode, colorea la barra del navegador en móvil según el tema activo
 - Corregir `lang="en"` a `lang="es"` en el `<html>`
 
+### Sistema de notificaciones Toast
+
+La app usaba `alert()` nativo del navegador para informar al usuario
+sobre acciones completadas, lo cual bloquea el hilo principal, rompe
+la experiencia visual y no respeta el tema de la aplicación.
+
+#### Solución propuesta
+
+![alt text](src/assets/error_estilo_4.png)
+
+- Crear `src/hooks/useToast.js` con estado de cola de toasts, auto-dismiss configurable (default 3500ms) y función `removeToast` para cierre manual por el usuario
+- Crear `src/components/ToastContainer.jsx` con dos componentes: `Toast` individual y `ToastContainer` que renderiza la lista, con cuatro variantes visuales: `success`, `error`, `warning` e `info`
+- Las tarjetas aparecen desde la esquina superior derecha con animación `toastSlideIn` de entrada elástica (`cubic-bezier`) y desaparecen automáticamente al consumirse el tiempo
+- Agregar barra de progreso animada en la parte inferior de cada toast que indica visualmente el tiempo restante antes del auto-dismiss
+- Integrar `useToast` en `App.jsx` pasando `showToast` como prop `onToast` al `ShoppingCart`
+- Reemplazar el `alert("Compra realizada con éxito")` en `ShoppingCart.jsx` por un toast de tipo `success` que además cierra el carrito automáticamente
+- Los estilos usan los tokens CSS del tema (`--md-success`, `--md-danger`, `--md-accent`, etc.) por lo que funcionan correctamente en dark y light mode
+
 ## Problemas de logica en el codigo
 
 ### Precio total de los items se recalcula cada que se abre el shopping cart pero no si se agregan mas items del mismo producto desde el, no se esta usando el prop total que ya recibe el componente

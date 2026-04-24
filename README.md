@@ -91,8 +91,7 @@ Se plantea una tableta nueva de estilos siguiendo los principios de material des
 
 ### Sistema de temas Dark / Light Mode
 
-La aplicación solo contaba con un tema oscuro fijo sin posibilidad de cambiar
-a modo claro, lo cual limita la accesibilidad y preferencias del usuario.
+La aplicación solo contaba con un tema oscuro fijo sin posibilidad de cambia a modo claro, lo cual limita la accesibilidad y preferencias del usuario.
 
 #### Solución propuesta
 
@@ -100,25 +99,32 @@ a modo claro, lo cual limita la accesibilidad y preferencias del usuario.
 
 Se implementa un sistema de temas completo basado en **Material Design**:
 
-- Agregar `[data-theme="dark"]` y `[data-theme="light"]` en `index.css` con
-  tokens CSS independientes para cada tema (superficies, bordes, texto,
-  sombras y colores semánticos)
+- Agregar `[data-theme="dark"]` y `[data-theme="light"]` en `index.css` con tokens CSS independientes para cada tema (superficies, bordes, texto, sombras y colores semánticos)
 - El tema oscuro preserva la esencia actual (`#0f0f1a` base, índigo/teal)
-- El tema claro usa fondos `#eef0ff`, superficies blancas y sombras con
-  tinte índigo
-- Agregar transición global `0.3s` en todos los elementos para que el cambio
-  de tema sea animado
+- El tema claro usa fondos `#eef0ff`, superficies blancas y sombras con tinte índigo
+- Agregar transición global `0.3s` en todos los elementos para que el cambio de tema sea animado
 - Crear componente `ThemeToggle.jsx` en `src/components/` con un pill switch
   animado (🌙 / ☀️) con thumb deslizante y efecto elástico
-- Integrar lógica en `App.jsx` con `useState` + `useEffect` que escribe
-  `data-theme` en `document.documentElement` y persiste la preferencia en
-  `localStorage`
+- Integrar lógica en `App.jsx` con `useState` + `useEffect` que escribe `data-theme` en `document.documentElement` y persiste la preferencia en `localStorage`
 
 ### Problemas de imagenes:
 
 #### Solucion propuesta
 
 El recurso de imagenes que se estaba usando esta obsoleto, se cambia por el servicio actualizado
+
+### Imágenes de productos reales
+
+Todos los productos tenían la misma imagen genérica de `placehold.co` que además dejó de funcionar correctamente.
+
+#### Solución propuesta
+
+- Reemplazar todas las URLs en `src/data/products.js` por fotos reales de **Unsplash** con parámetros fijos `?w=300&h=300&fit=crop&crop=center` para garantizar tamaño y encuadre consistente en todas las tarjetas
+- Cada producto tiene su propia foto curada según su categoría (deportivo, formal, casual, botas)
+- Actualizar `ProductCard.jsx` agregando un skeleton con animación shimmer que se muestra mientras la imagen carga, usando los tokens de color del tema para que funcione en dark y light mode
+- Agregar transición `opacity 0→1` al revelar la imagen una vez cargada
+- Agregar fallback `onError` por si una URL de Unsplash falla, mostrando un placeholder con los colores del tema en lugar de un ícono roto
+- Agregar atributo `loading="lazy"` para no bloquear el render inicial
 
 ## Problemas de logica en el codigo
 

@@ -1,15 +1,35 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import PropTypes from "prop-types";
 
+const FALLBACK_IMAGE =
+  "https://placehold.co/300x300/1a1a2e/9fa8da?text=Sin+imagen";
 const ProductCard = memo(function ProductCard({
   product,
   onAddToCart,
   quantityInCart,
 }) {
   const isMaxStock = quantityInCart >= product.stock;
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const [imgError, setImgError] = useState(false);
   return (
     <div className="product-card">
-      <img src={product.image} alt={product.name} className="product-image" />
+      <div className="product-image-wrapper">
+        {!imgLoaded && !imgError && (
+          <div className="product-image-skeleton" aria-hidden="true" />
+        )}
+        <img
+          src={imgError ? FALLBACK_IMAGE : product.image}
+          alt={product.name}
+          className="product-image"
+          style={{ opacity: imgLoaded ? 1 : 0 }}
+          onLoad={() => setImgLoaded(true)}
+          onError={() => {
+            setImgError(true);
+            setImgLoaded(true);
+          }}
+          loading="lazy"
+        />
+      </div>
       <div className="product-info">
         <h3>{product.name}</h3>
         <p className="product-price">${product.price}</p>

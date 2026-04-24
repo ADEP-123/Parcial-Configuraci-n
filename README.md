@@ -103,7 +103,7 @@ Se implementa un sistema de temas completo basado en **Material Design**:
 - El tema oscuro preserva la esencia actual (`#0f0f1a` base, índigo/teal)
 - El tema claro usa fondos `#eef0ff`, superficies blancas y sombras con tinte índigo
 - Agregar transición global `0.3s` en todos los elementos para que el cambio de tema sea animado
-- Crear componente `ThemeToggle.jsx` en `src/components/` con un pill switch
+- Crear componente `Themetoggle.jsx` en `src/components/` con un pill switch
   animado (🌙 / ☀️) con thumb deslizante y efecto elástico
 - Integrar lógica en `App.jsx` con `useState` + `useEffect` que escribe `data-theme` en `document.documentElement` y persiste la preferencia en `localStorage`
 

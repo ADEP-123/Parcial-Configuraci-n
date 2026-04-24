@@ -4,7 +4,7 @@ import ProductCard from "./components/ProductCard";
 import ShoppingCart from "./components/ShoppingCart";
 import FilterBar from "./components/FilterBar";
 import SearchBar from "./components/SearchBar";
-import ThemeToggle from "./components/ThemeToggle";
+import ThemeToggle from "./components/Themetoggle";
 import { useCart } from "./hooks/useCart";
 import { useProductFilter } from "./hooks/useProductFilter";
 import ToastContainer from "./components/ToastContainer";

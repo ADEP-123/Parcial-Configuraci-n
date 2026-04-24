@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import ProductCard from "./components/ProductCard";
 import ShoppingCart from "./components/ShoppingCart";
 import FilterBar from "./components/FilterBar";
 import SearchBar from "./components/SearchBar";
+import ThemeToggle from "./components/ThemeToggle";
 import { useCart } from "./hooks/useCart";
 import { useProductFilter } from "./hooks/useProductFilter";
 
@@ -21,13 +22,34 @@ function App() {
   } = useProductFilter();
   const [showCart, setShowCart] = useState(false);
 
+  // ── Tema ──────────────────────────────────────────────────────────────────
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") ?? "dark",
+  );
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () =>
+    setTheme(prev => (prev === "dark" ? "light" : "dark"));
+  // ─────────────────────────────────────────────────────────────────────────
+
   return (
     <div className="app-container">
       <header className="header">
-        <h1>Tienda de Zapatos</h1>
-        <button className="cart-button" onClick={() => setShowCart(!showCart)}>
-          Carrito ({cart.reduce((total, item) => total + item.quantity, 0)})
-        </button>
+        <h1> Tienda de Zapatos</h1>
+        <div className="header-actions">
+          <ThemeToggle theme={theme} onToggle={toggleTheme} />
+          <button
+            className="cart-button"
+            onClick={() => setShowCart(!showCart)}
+          >
+            🛒 Carrito ({cart.reduce((total, item) => total + item.quantity, 0)}
+            )
+          </button>
+        </div>
       </header>
 
       <main className="main-content">

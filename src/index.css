@@ -1,22 +1,24 @@
-:root {
-  /* === Paleta Material Design: Azul / Gris Oscuro === */
-
+/* =============================================
+   TEMA OSCURO (por defecto)
+   ============================================= */
+:root,
+[data-theme="dark"] {
   /* Superficies */
-  --md-bg: #121212;
-  --md-surface: #1e1e2e;
-  --md-surface-alt: #252537;
-  --md-surface-high: #2e2e42;
+  --md-bg: #0f0f1a;
+  --md-surface: #1a1a2e;
+  --md-surface-alt: #20203a;
+  --md-surface-high: #2a2a45;
 
   /* Bordes */
-  --md-border: #3a3a52;
-  --md-border-light: #4a4a66;
+  --md-border: #33335a;
+  --md-border-light: #44447a;
 
   /* Texto */
   --md-on-bg: #e8eaf6;
   --md-on-surface: #c5cae9;
   --md-on-muted: #9fa8da;
 
-  /* Primario: Azul Material */
+  /* Primario: Índigo Material */
   --md-primary: #5c6bc0;
   --md-primary-dark: #3949ab;
   --md-primary-light: #7986cb;
@@ -33,32 +35,114 @@
   --md-price: #80cbc4;
 
   /* Sombras */
-  --md-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
-  --md-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
-  --md-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --md-shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.45);
+  --md-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.55);
+  --md-shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.65);
 
-  /* Tipografía */
-  --md-font: "Segoe UI", system-ui, sans-serif;
-  --md-mono: ui-monospace, Consolas, monospace;
+  /* Toggle específico */
+  --md-toggle-bg: #2a2a45;
+  --md-toggle-border: #44447a;
+  --md-toggle-thumb: #7986cb;
+  --md-toggle-icon: "🌙";
 
-  font: 16px/1.5 var(--md-font);
-  color: var(--md-on-bg);
-  background: var(--md-bg);
-  -webkit-font-smoothing: antialiased;
   color-scheme: dark;
 }
 
-/* Reset base */
+/* =============================================
+   TEMA CLARO
+   ============================================= */
+[data-theme="light"] {
+  /* Superficies */
+  --md-bg: #eef0ff;
+  --md-surface: #ffffff;
+  --md-surface-alt: #f5f6ff;
+  --md-surface-high: #e8eaf6;
+
+  /* Bordes */
+  --md-border: #c5cae9;
+  --md-border-light: #9fa8da;
+
+  /* Texto */
+  --md-on-bg: #1a1a2e;
+  --md-on-surface: #3d3d6b;
+  --md-on-muted: #5c6bc0;
+
+  /* Primario */
+  --md-primary: #3949ab;
+  --md-primary-dark: #283593;
+  --md-primary-light: #5c6bc0;
+  --md-on-primary: #ffffff;
+
+  /* Acento */
+  --md-accent: #1e88e5;
+  --md-accent-dark: #1565c0;
+  --md-on-accent: #ffffff;
+
+  /* Semánticos */
+  --md-success: #43a047;
+  --md-danger: #e53935;
+  --md-price: #00897b;
+
+  /* Sombras (más suaves, con tinte de color) */
+  --md-shadow-sm: 0 2px 6px rgba(57, 73, 171, 0.1);
+  --md-shadow-md: 0 4px 16px rgba(57, 73, 171, 0.15);
+  --md-shadow-lg: 0 8px 28px rgba(57, 73, 171, 0.2);
+
+  /* Toggle específico */
+  --md-toggle-bg: #e8eaf6;
+  --md-toggle-border: #9fa8da;
+  --md-toggle-thumb: #3949ab;
+  --md-toggle-icon: "☀️";
+
+  color-scheme: light;
+}
+
+/* =============================================
+   TRANSICIÓN GLOBAL ENTRE TEMAS
+   ============================================= */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.2s ease,
+    box-shadow 0.3s ease;
 }
 
+/* Excluir transición en elementos interactivos para no interferir con sus propios efectos */
+button,
+input,
+img {
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.2s ease,
+    box-shadow 0.3s ease,
+    transform 0.25s ease,
+    opacity 0.2s ease;
+}
+
+/* =============================================
+   BASE
+   ============================================= */
 body {
   margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  color: var(--md-on-bg);
   background: var(--md-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* Tipografía */
 
 #root {
   width: 100%;
@@ -78,4 +162,22 @@ h4 {
 p {
   margin: 0;
   color: var(--md-on-surface);
+}
+
+/* =============================================
+   SCROLLBAR PERSONALIZADA
+   ============================================= */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--md-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--md-border-light);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--md-primary-light);
 }

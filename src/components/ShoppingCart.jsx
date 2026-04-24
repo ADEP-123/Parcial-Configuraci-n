@@ -9,9 +9,15 @@ const ShoppingCart = memo(function ShoppingCart({
   total,
   onCheckout,
   onToast,
+  onConfirm,
 }) {
-  const handleCheckout = () => {
-    if (window.confirm("¿Confirmar la compra?")) {
+  const handleCheckout = async () => {
+    const ok = await onConfirm({
+      title: "Finalizar compra",
+      message: `¿Confirmar la compra de ${cart.reduce((t, i) => t + i.quantity, 0)} producto(s) por $${total.toFixed(2)}?`,
+      variant: "success",
+    });
+    if (ok) {
       onCheckout();
       onClose();
       onToast({ message: "¡Compra realizada con éxito!", type: "success" });
@@ -62,9 +68,18 @@ const ShoppingCart = memo(function ShoppingCart({
                 </div>
                 <button
                   className="remove-button"
-                  onClick={() => {
-                    if (window.confirm(`¿Eliminar ${item.name} del carrito?`)) {
+                  onClick={async () => {
+                    const ok = await onConfirm({
+                      title: "Eliminar producto",
+                      message: `¿Eliminar "${item.name}" del carrito?`,
+                      variant: "danger",
+                    });
+                    if (ok) {
                       onRemove(item.id);
+                      onToast({
+                        message: `"${item.name}" eliminado del carrito`,
+                        type: "info",
+                      });
                     }
                   }}
                 >
@@ -102,6 +117,7 @@ ShoppingCart.propTypes = {
   total: PropTypes.number.isRequired,
   onCheckout: PropTypes.func.isRequired,
   onToast: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func.isRequired,
 };
 
 export default ShoppingCart;

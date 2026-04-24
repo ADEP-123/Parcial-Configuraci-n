@@ -9,6 +9,8 @@ import { useCart } from "./hooks/useCart";
 import { useProductFilter } from "./hooks/useProductFilter";
 import ToastContainer from "./components/ToastContainer";
 import { useToast } from "./hooks/useToast";
+import ConfirmModal from "./components/ConfirmModal";
+import { useConfirm } from "./hooks/useConfirm";
 
 function App() {
   const { cart, addToCart, removeFromCart, updateQuantity, clearCart, total } =
@@ -25,6 +27,8 @@ function App() {
   const [showCart, setShowCart] = useState(false);
 
   const { toasts, showToast, removeToast } = useToast();
+
+  const { confirmState, confirm } = useConfirm();
 
   const [theme, setTheme] = useState(
     () => localStorage.getItem("theme") ?? "dark",
@@ -91,10 +95,11 @@ function App() {
           total={total}
           onCheckout={clearCart}
           onToast={showToast}
+          onConfirm={confirm}
         />
       )}
-
       <ToastContainer toasts={toasts} onRemove={removeToast} />
+      <ConfirmModal confirmState={confirmState} />
     </div>
   );
 }
